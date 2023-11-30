@@ -1,23 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import api from "./api/axiosConfig";
+import { useState, useEffect } from "react";
+import Nav from "./components/Nav";
+import Home from "./components/Home";
+import MoviePage from "./components/MoviePage";
+import LogInPage from "./components/LogInPage";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
+  const [movies, setMovies] = useState();
+
+  async function getMovies() {
+    try {
+      const response = await api.get("/api/v1/movies");
+      console.log(response.data);
+
+      setMovies(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const [userData, setUserData] = useState({
+    userType: "",
+    eMail: "",
+    loggedIn: false,
+  });
+  console.log(userData);
+
+  function logIn(data) {
+    setUserData(data);
+  }
+
+  function logOut() {
+    setUserData({
+      userType: "",
+      loggedIn: false,
+    });
+  }
+
+  useEffect(() => {
+    getMovies();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-full">
+      <Nav loggedIn={userData.loggedIn} logOut={logOut} />
+      <Routes>
+        <Route
+          path="/"
+          element={<Home movies={movies} userData={userData} />}
+        ></Route>
+        <Route
+          path="/:imdbId"
+          element={<MoviePage userData={userData} />}
+        ></Route>
+        <Route
+          path="/logIn"
+          element={<LogInPage updUserData={logIn} />}
+        ></Route>
+      </Routes>
     </div>
   );
 }
