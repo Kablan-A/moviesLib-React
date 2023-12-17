@@ -2,7 +2,7 @@ import { useState } from "react";
 import api from "../api/axiosConfig";
 import { Link } from "react-router-dom";
 
-function LogInPage({ updUserData }) {
+function SignUpPage({ updUserData }) {
   const [userType, setUserType] = useState("user");
   console.log(userType);
 
@@ -112,7 +112,7 @@ function LogInPage({ updUserData }) {
             onClick={(event) => addUser(event)}
             className="text-[1.5vmax] hover:underline underline-offset-4 text-white"
           >
-            <Link to={"/"}>Log In</Link>
+            <Link to={"/"}>Sign Up</Link>
           </button>
         </form>
       </div>
@@ -120,4 +120,4 @@ function LogInPage({ updUserData }) {
   );
 }
 
-export default LogInPage;
+export default SignUpPage;

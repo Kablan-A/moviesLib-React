@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import Nav from "./components/Nav";
 import Home from "./components/Home";
 import MoviePage from "./components/MoviePage";
-import LogInPage from "./components/LogInPage";
+import SignUpPage from "./components/SignUpPage";
+import SignInPage from "./components/SignInPage";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -55,8 +56,12 @@ function App() {
           element={<MoviePage userData={userData} />}
         ></Route>
         <Route
-          path="/logIn"
-          element={<LogInPage updUserData={logIn} />}
+          path="/signUp"
+          element={<SignUpPage updUserData={logIn} />}
+        ></Route>
+        <Route
+          path="/signIn"
+          element={<SignInPage updUserData={logIn} />}
         ></Route>
       </Routes>
     </div>

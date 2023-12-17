@@ -58,7 +58,7 @@ function AddMoviePageSecond({ closeComponent }) {
 
       <div
         className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-         z-40 transition-all duration-300 w-5/6 md:w-2/3 h-1/3 md:h-4/5 lg:w-2/5"
+         z-40 transition-all duration-300 w-5/6 md:w-2/3 h-[40%] md:h-4/5 lg:w-2/5"
       >
         <div
           className="w-full h-full bg-secondaryBlack rounded-xl grid grid-cols-2 

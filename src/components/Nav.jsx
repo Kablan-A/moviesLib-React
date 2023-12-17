@@ -52,12 +52,21 @@ function Nav({ loggedIn, logOut }) {
             Log Out
           </div>
         ) : (
-          <Link
-            to={"/logIn"}
-            className="p-2 text-[1.5vmax] hover:underline underline-offset-4"
-          >
-            Log In
-          </Link>
+          <div className="flex items-center gap-[2vmin]">
+            <Link
+              to={"/signIn"}
+              className="p-2 text-[1.5vmax] hover:underline underline-offset-4"
+            >
+              Sign In
+            </Link>
+
+            <Link
+              to={"/signUp"}
+              className="p-2 text-[1.5vmax] hover:underline underline-offset-4"
+            >
+              Sign Up
+            </Link>
+          </div>
         )}
       </nav>
     </header>
